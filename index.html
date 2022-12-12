@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+  <title>Discounter</title>
+</head>
+<body>
+  <div id="discounterContainer">
+    <form id="discounter">
+      <label for="prob">Probability (in percent):</label><br>
+      <input type="text" id="prob" name="prob" autocomplete="off"><br>
+      
+      <div id="modes">
+        <input type="radio" id="linear" name="mode" value="linear">
+        <label for="linear">Linear</label><br>
+        <input type="radio" id="exponential" name="mode" value="exponential">
+        <label for="exponential">Exponential</label><br>
+      </div>
+      
+      <div id="dates">
+        <label for="dateStart">Last forecast date:</label>
+        <input type="date" id="dateStart" name="dateStart"><br>
+        <label for="dateCurrent">Current date:</label>
+        <input type="date" id="dateCurrent" name="dateCurrent"><br>
+        <label for="dateEnd">Resolution date:</label>
+        <input type="date" id="dateEnd" name="dateEnd"><br>
+      </div>
+      
+      <div><button type="submit">Submit</button></div>
+      <p id="result"></p>
+    </form>
+  </div>
+</body>
+</html>
