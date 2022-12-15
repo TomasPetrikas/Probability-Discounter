@@ -15,10 +15,16 @@
       <input type="text" id="prob" name="prob" autocomplete="off"><br>
       
       <div id="modes">
-        <input type="radio" id="linear" name="mode" value="linear">
-        <label for="linear">Linear</label><br>
-        <input type="radio" id="exponential" name="mode" value="exponential">
-        <label for="exponential">Exponential</label><br>
+        <div id="modes-left">
+          <input type="radio" id="linear" name="mode" value="linear">
+          <label for="linear">Linear</label><br>
+          <input type="radio" id="exponential" name="mode" value="exponential">
+          <label for="exponential">Exponential</label><br>
+        </div>
+        <div id="modes-right">
+          <input type="checkbox" id="reverse" name="reverse" value="reverse">
+          <label for="reverse">Reversed?</label>
+        </div>
       </div>
       
       <div id="dates">

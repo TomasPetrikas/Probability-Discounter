@@ -29,6 +29,11 @@ p {
   margin-top: 16px;
 }
 
+#modes {
+  display: flex;
+  justify-content: space-between;
+}
+
 #dates {
   display: flex;
   flex-wrap: wrap;

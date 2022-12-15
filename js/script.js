@@ -23,7 +23,7 @@ function calculateProb(e) {
   //console.log("Running calculateProb");
   //console.log(e.target["prob"].value);
   
-  const userProb = e.target["prob"].value;
+  let userProb = e.target["prob"].value;
   const daysTotal = getDays(dateStart, dateEnd);
   const daysLeft = getDays(dateCurrent, dateEnd);
   
@@ -41,13 +41,27 @@ function calculateProb(e) {
   
   result.style.color = "black";
   
+  if (reverse.checked) {
+    userProb = 100 - userProb;
+  }
+  
   if (linear.checked) {
-    result.textContent = userProb / daysTotal * daysLeft + "%";
+    if (!reverse.checked) {
+      result.textContent = userProb / daysTotal * daysLeft + "%";
+    }
+    else {
+      result.textContent = 100 - (userProb / daysTotal * daysLeft) + "%";
+    }
   }
   else if (exponential.checked) {
-    const decayFactor = (1 - userProb / 100)**(1 / daysTotal)
+    const decayFactor = (1 - userProb / 100)**(1 / daysTotal);
     
-    result.textContent = (1 - decayFactor**daysLeft) * 100 + "%";
+    if (!reverse.checked) {
+      result.textContent = (1 - decayFactor**daysLeft) * 100 + "%";
+    }
+    else {
+      result.textContent = 100 - ((1 - decayFactor**daysLeft) * 100) + "%";
+    }
   }
 }
 
@@ -57,6 +71,7 @@ const form = document.querySelector("#discounter");
 const prob = document.querySelector("#prob");
 const modeLinear = document.querySelector("#linear");
 const modeExponential = document.querySelector("#exponential");
+const modeReverse = document.querySelector("#reverse");
 const dateStart = document.querySelector("#dateStart");
 const dateCurrent = document.querySelector("#dateCurrent");
 const dateEnd = document.querySelector("#dateEnd");
@@ -64,6 +79,7 @@ const result = document.querySelector("#result");
 
 // Default values
 linear.checked = true;
+reverse.checked = false;
 dateStart.value = new Date().toISOString().substring(0,10);   // Today
 dateCurrent.value = new Date().toISOString().substring(0,10); // Today
 dateEnd.value = new Date().getFullYear() + 1 + "-01-01";      // Start of next year
